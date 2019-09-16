@@ -5,7 +5,7 @@ class ArticlesList extends Component {
 
  }
   render() { 
-    return ( <p>Artciles list</p> );
+    return ( <p>Articles list</p> );
   }
 }
  
