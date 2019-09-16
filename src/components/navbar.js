@@ -1,7 +1,11 @@
 import React from 'react';
+import {Link} from '@reach/router';
 
 const NavBar = () => {
-  return ( <p>this is the NavBar</p> );
+  return ( 
+  <>
+    <Link to="/">Home</Link>
+  </> );
 }
  
 export default NavBar;

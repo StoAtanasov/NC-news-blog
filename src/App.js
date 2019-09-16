@@ -13,7 +13,6 @@ function App() {
       <Home path ="/"/>
       <ArticlesList path="/articles"/>
     </Router>
-      Hello World
     </div>
   )
 }
