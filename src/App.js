@@ -6,6 +6,7 @@ import {Router} from '@reach/router'
 import ArticlesList from "./components/artcilesList";
 import SingleArticle from './components/singleArticle';
 import "bootstrap/dist/css/bootstrap.min.css";
+import TopicsList from './components/topicsList';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Home path="/" />
         <ArticlesList path="/articles" />
         <SingleArticle path="/articles/:article_id" />
+        <ArticlesList path="/topics/:topic" />
+        <TopicsList path="/topics" />      
       </Router>
     </div>
   );

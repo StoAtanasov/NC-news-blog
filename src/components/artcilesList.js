@@ -4,6 +4,7 @@ import * as api from "./api";
 class ArticlesList extends Component {
   state = {
     articles: [],
+    topic: [],
     isLoading: true,
     error: null
   };
@@ -29,9 +30,17 @@ class ArticlesList extends Component {
   componentDidMount() {
     this.fetchArticles();
   }
+  componentDidUpdate(prevProps,prevState){
+
+    console.log("props",prevProps)
+if (this.props.topic !== prevProps.topic) {
+  this.fetchArticles();
+}
+  }
 
   fetchArticles = () => {
-    api.getAllArticles().then(articles => {
+    const { topic } = this.props;
+    api.getAllArticles(topic).then(articles => {
       this.setState({ articles, isLoading: false });
     });
   };

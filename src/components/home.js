@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import TopicsList from './topicsList';
 
 class Home extends Component {
   sate = {
 
   }
   render() { 
-    return ( <p>
-      Home page
-    </p> );
+    return ( 
+      <TopicsList />
+     );
   }
 }
  
