@@ -13,7 +13,7 @@ class TopicsList extends Component {
       <div>
         {topics.map(topic => {
           return (
-            <ul>
+            <ul key={topic.slug}>
               <li>
                 {" "}
                 <Link
@@ -35,7 +35,6 @@ class TopicsList extends Component {
   fetchArticlesByTopic = () => {
 
     api.getAllTopcs().then(topics => {
-      console.log("topics", topics);
       this.setState({topics, isLoading: false})
     })
   };

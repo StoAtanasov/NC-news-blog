@@ -19,7 +19,9 @@ class ArticlesList extends Component {
               <li>Author: {article.author}</li>
               <li>
                 Title:{" "}
-                <Link to={`/articles/${article.title}`}>{article.title}</Link>{" "}
+                <Link to={`/articles/${article.article_id}`}>
+                  {article.title}
+                </Link>{" "}
               </li>
               <li>Topic: {article.topic}</li>
               <li>Data: {new Date(article.created_at).toLocaleString()}</li>
