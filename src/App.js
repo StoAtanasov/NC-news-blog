@@ -5,6 +5,7 @@ import Home from './components/home';
 import {Router} from '@reach/router'
 import ArticlesList from "./components/artcilesList";
 import SingleArticle from './components/singleArticle';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

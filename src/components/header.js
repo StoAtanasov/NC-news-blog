@@ -7,7 +7,6 @@ const Header = () => {
   <> 
     <NavBar />
     <h1>NC news blog</h1>
-  
   </>
   )
 }
