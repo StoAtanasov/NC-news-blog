@@ -33,3 +33,9 @@ export const getArtcilceComments = article_id => {
     return data.comments;
   })
 }
+
+export const postArticleComment = article_id => {
+  return request.post(`/articles/${article_id}/comments`).then(({data})=>{
+    console.log("data API >>>>", data);
+  })
+}

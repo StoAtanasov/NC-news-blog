@@ -10,7 +10,8 @@ class ArticlesList extends Component {
     error: null
   };
   render() {
-    const { articles } = this.state;
+    const { articles, isLoading } = this.state;
+    if(isLoading) return <p>Loading...</p>
     return (
       <main>
         {articles.map(article => {
@@ -25,7 +26,11 @@ class ArticlesList extends Component {
               </li>
               <li>Topic: {article.topic}</li>
               <li>Data: {new Date(article.created_at).toLocaleString()}</li>
-              <li>Comments: {article.comment_count}</li>
+              <li>
+                <Link to={`/articles/${article.article_id}/comments`}>
+                  Comments: {article.comment_count}
+                </Link>
+              </li>
             </ul>
           );
         })}

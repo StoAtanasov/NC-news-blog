@@ -23,7 +23,6 @@ class ArticleComments extends Component {
     this.fetchComments();
   }
   fetchComments = () => {
-    console.log("fetch comments", this.props.article_id);
     const { article_id } = this.props;
     api.getArtcilceComments(article_id).then(comments => {
       this.setState({ comments, isLoading: false });
