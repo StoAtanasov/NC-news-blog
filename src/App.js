@@ -8,6 +8,8 @@ import SingleArticle from "./components/singleArticle";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TopicsList from "./components/topicsList";
 import ArticleComments from "./components/artcileComments";
+import CreateComment from "./components/createComment";
+import RemoveComment from "./components/RemoveComment";
 
 class App extends Component {
   state = {
@@ -21,10 +23,18 @@ class App extends Component {
         <Router>
           <Home path="/" />
           <ArticlesList path="/articles" />
-          <SingleArticle path="/articles/:article_id" />
-          <ArticlesList path="/topics/:topic" />
-          <ArticleComments path="/articles/:article_id/comments" />
+          <SingleArticle
+            path="/articles/:article_id"
+            loggedInUser={loggedInUser}
+          />
+          <ArticlesList path="/topics/:topic" l />
+          <ArticleComments
+            path="/articles/:article_id/comments"
+            loggedInUser={loggedInUser}
+          />
           <TopicsList path="/topics" />
+          <CreateComment path="/articles/:article_id/newcomment" />
+          <RemoveComment path="/articles/:article_id/:comment_id" />
         </Router>
       </div>
     );

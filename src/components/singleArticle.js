@@ -11,6 +11,7 @@ class SingleArticle extends Component {
   };
   render() {
     const { article, isLoading, showComments } = this.state;
+    const { loggedInUser } = this.props;
     if(isLoading) return <p>Loading...</p>
     return (
       <main>
@@ -23,7 +24,12 @@ class SingleArticle extends Component {
           <li>Comments: {article.comment_count}</li>
         </ul>
         <button onClick={this.fetchAllComments}>Show comments</button>
-        {showComments && <ArticleComments article_id={article.article_id} />}
+        {showComments && (
+          <ArticleComments
+            loggedInUser={loggedInUser}
+            article_id={article.article_id}
+          />
+        )}
       </main>
     );
   }
@@ -31,10 +37,16 @@ class SingleArticle extends Component {
   componentDidMount(){
     this.fetchArticle();
   }
+  componentDidUpdate(prevProps, prevState) {
+    // const {article} = this.state;
+    // if (prevState.article !== article.comment_count) {
+    //   this.fetchArticle();
+    // }
+  }
   
   fetchAllComments = () =>{
-    this.setState(prevsate => {
-      return {showComments : !prevsate.showComments}
+    this.setState(prevSate => {
+      return {showComments : !prevSate.showComments}
     })
 
   }

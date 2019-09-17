@@ -1,28 +1,23 @@
 import React, { Component } from "react";
-
+import { Button, Form} from "react-bootstrap";
 class CreateComment extends Component {
   state = {
-    username: "",
     body: ""
   };
   render() {
-    const { loggedInUser } = this.props;
+    const { body } = this.state;
     return (
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Comment</Form.Label>
+          <Form.Control
+            name="body"
+            value={body}
+            onChange={this.handleChange}
+            as="textarea"
+            rows="5"
+            placeholder="Enter your comment here"
+          />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
@@ -30,9 +25,18 @@ class CreateComment extends Component {
       </Form>
     );
   }
+  
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
-  createArticlecomment = () =>{
-
+  handleSubmit = (event) => {
+    const {body} = this.state;
+    const { loggedInUser, postComment } = this.props;
+    event.preventDefault()
+    postComment(body, loggedInUser);
+    this.setState({body: ""})
   }
 }
 
