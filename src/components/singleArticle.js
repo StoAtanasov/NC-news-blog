@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import * as api from './api';
 import ArticleComments from "./artcileComments";
+import VoteUpdater from "./votesUpdater";
+import ErrorHandler from "./errorHandler";
 
 class SingleArticle extends Component {
   state = {
@@ -10,8 +12,9 @@ class SingleArticle extends Component {
     error: null
   };
   render() {
-    const { article, isLoading, showComments } = this.state;
+    const { article, isLoading, showComments, error } = this.state;
     const { loggedInUser } = this.props;
+    if(error) return <ErrorHandler error={error}/>
     if(isLoading) return <p>Loading...</p>
     return (
       <main>
@@ -20,7 +23,7 @@ class SingleArticle extends Component {
           <li>Title: {article.title}</li>
           <li>{article.body}</li>
           <li>Date: {new Date(article.created_at).toLocaleString()}</li>
-          <li>Votes: {article.votes}</li>
+          <VoteUpdater data={article}/>
           <li>Comments: {article.comment_count}</li>
         </ul>
         <button onClick={this.fetchAllComments}>Show comments</button>
@@ -37,12 +40,6 @@ class SingleArticle extends Component {
   componentDidMount(){
     this.fetchArticle();
   }
-  componentDidUpdate(prevProps, prevState) {
-    // const {article} = this.state;
-    // if (prevState.article !== article.comment_count) {
-    //   this.fetchArticle();
-    // }
-  }
   
   fetchAllComments = () =>{
     this.setState(prevSate => {
@@ -55,6 +52,13 @@ class SingleArticle extends Component {
     const {article_id} = this.props;
     api.getArticle(article_id).then(article => {
       this.setState({article, isLoading: false})
+    }).catch((error) => {
+      this.setState({
+        error: { 
+          status: error.response.status, 
+          msg: error.response.data.msg },
+        isLoading: false
+      });
     });
   };
 }

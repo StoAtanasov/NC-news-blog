@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import * as api from "./api";
-import {Link} from '@reach/router';
-import SortBy from './sortBy';
-
+import { Link } from "@reach/router";
+import SortBy from "./sortBy";
+import VoteUpdater from './votesUpdater'
 class ArticlesList extends Component {
   state = {
     articles: [],
@@ -28,6 +28,7 @@ class ArticlesList extends Component {
               </li>
               <li>Topic: {article.topic}</li>
               <li>Data: {new Date(article.created_at).toLocaleString()}</li>
+              <VoteUpdater data={article} />
               <li>
                 <Link to={`/articles/${article.article_id}/comments`}>
                   Comments: {article.comment_count}

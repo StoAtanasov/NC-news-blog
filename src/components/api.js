@@ -6,7 +6,7 @@ const request = axios.create({
 
 export const getArticlesByParams =(topic, sort_by) => {
   return request
-    .get(`/articles`, {
+    .get(`/articl`, {
       params: { topic, sort_by }
     })
     .then(({ data }) => {
@@ -46,3 +46,17 @@ export const deleteComment = (comment_id) => {
   return request
   .delete(`/comments/${comment_id}`);
  };
+
+ export const patchCommentVotes = (vote, comment_id) => {
+   return request
+     .patch(`/comments/${comment_id}`, {inc_votes: vote})
+     .then(({ data }) => {
+       return data.comment;
+     });
+ }
+
+ export const patchArticleVotes = (vote, article_id) => {
+   return request.patch(`/articles/${article_id}`, {inc_votes: vote}).then(({data})=>{
+     return data.article;
+   })
+ }

@@ -2,13 +2,11 @@ import React from "react";
 import { Dropdown, Button, ButtonGroup } from "react-bootstrap";
 
 const SortBy = props => {
-  console.log("sort by", props);
   return (
     <Dropdown
       as={ButtonGroup}
       onClick={event => {
         const sort_by = event.target.name;
-        console.log(sort_by);
         if (sort_by) {
           props.fetchArticles(sort_by);
         }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "./api";
 import CreateComment from "./createComment";
 import RemoveComment from "./removeComment";
+import VoteUpdater from "./votesUpdater";
 
 class ArticleComments extends Component {
   state = {
@@ -11,7 +12,7 @@ class ArticleComments extends Component {
   render() {
     const { comments, isLoading } = this.state;
     const { loggedInUser } = this.props;
-    console.log(comments);
+
     if (isLoading) return <p>Loading...</p>;
     return (
       <section>
@@ -21,7 +22,7 @@ class ArticleComments extends Component {
               <li>Author: {comment.author}</li>
               <li>{comment.body}</li>
               <li>Date: {new Date(comment.created_at).toLocaleString()}</li>
-              <li>Votes: {comment.votes}</li>
+              <VoteUpdater data={comment}/>            
               { loggedInUser === comment.author ? <RemoveComment
                 comment_id={comment.comment_id}
                 removeCommentById={this.removeCommentById}
@@ -68,7 +69,6 @@ class ArticleComments extends Component {
     api.deleteComment(comment_id).then(() => {
       this.setState(curentState => {
         const newCommentsList = curentState.comments.filter(comment => {
-          console.log("remove comment", comment);
           return comment_id !== comment.comment_id;
         });
         return { comments: newCommentsList };
