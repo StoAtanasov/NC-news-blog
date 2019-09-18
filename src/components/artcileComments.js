@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as api from "./api";
 import CreateComment from "./createComment";
-import RemoveComment from "./RemoveComment";
+import RemoveComment from "./removeComment";
 
 class ArticleComments extends Component {
   state = {
@@ -21,6 +21,7 @@ class ArticleComments extends Component {
               <li>Author: {comment.author}</li>
               <li>{comment.body}</li>
               <li>Date: {new Date(comment.created_at).toLocaleString()}</li>
+              <li>Votes: {comment.votes}</li>
               { loggedInUser === comment.author ? <RemoveComment
                 comment_id={comment.comment_id}
                 removeCommentById={this.removeCommentById}

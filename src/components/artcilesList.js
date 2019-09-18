@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "./api";
 import {Link} from '@reach/router';
+import SortBy from './sortBy';
 
 class ArticlesList extends Component {
   state = {
@@ -11,9 +12,10 @@ class ArticlesList extends Component {
   };
   render() {
     const { articles, isLoading } = this.state;
-    if(isLoading) return <p>Loading...</p>
+    if (isLoading) return <p>Loading...</p>;
     return (
       <main>
+        <SortBy fetchArticles={this.fetchArticles} />
         {articles.map(article => {
           return (
             <ul key={article.article_id}>
@@ -41,15 +43,15 @@ class ArticlesList extends Component {
   componentDidMount() {
     this.fetchArticles();
   }
-  componentDidUpdate(prevProps){
-if (this.props.topic !== prevProps.topic) {
-  this.fetchArticles();
-}
+  componentDidUpdate(prevProps) {
+    if (this.props.topic !== prevProps.topic) {
+      this.fetchArticles();
+    }
   }
 
-  fetchArticles = () => {
+  fetchArticles = sort_by => {
     const { topic } = this.props;
-    api.getArticlesByParams(topic).then(articles => {
+    api.getArticlesByParams(topic, sort_by).then(articles => {
       this.setState({ articles, isLoading: false });
     });
   };

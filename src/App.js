@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import TopicsList from "./components/topicsList";
 import ArticleComments from "./components/artcileComments";
 import CreateComment from "./components/createComment";
-import RemoveComment from "./components/RemoveComment";
+import RemoveComment from "./components/removeComment";
 
 class App extends Component {
   state = {
