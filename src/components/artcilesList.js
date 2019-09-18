@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import * as api from "./api";
 import { Link } from "@reach/router";
 import SortBy from "./sortBy";
-import VoteUpdater from './votesUpdater'
+import VoteUpdater from './votesUpdater';
+import ErrorHandler from './errorHandler';
+
 class ArticlesList extends Component {
   state = {
     articles: [],
@@ -11,7 +13,8 @@ class ArticlesList extends Component {
     error: null
   };
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, error } = this.state;
+    if(error) return <ErrorHandler error={error} />
     if (isLoading) return <p>Loading...</p>;
     return (
       <main>
@@ -54,6 +57,16 @@ class ArticlesList extends Component {
     const { topic } = this.props;
     api.getArticlesByParams(topic, sort_by).then(articles => {
       this.setState({ articles, isLoading: false });
+    })
+    .catch(error =>{
+      console.log(error);
+      this.setState({
+        error: {
+          status: error.response.status,
+          msg: error.response.data.msg
+        },
+        isLoading: false
+      });
     });
   };
 }

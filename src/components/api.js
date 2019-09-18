@@ -6,7 +6,7 @@ const request = axios.create({
 
 export const getArticlesByParams =(topic, sort_by) => {
   return request
-    .get(`/articl`, {
+    .get(`/articles`, {
       params: { topic, sort_by }
     })
     .then(({ data }) => {
@@ -36,7 +36,7 @@ export const getArtcilceComments = article_id => {
 
 export const postArticleComment = (article_id, newComment) => {
   return request
-    .post(`/articles/${article_id}/comments`, newComment)
+    .post(`/articls/${article_id}/comments`, newComment)
     .then(({ data }) => {
       return data.comment;
     });

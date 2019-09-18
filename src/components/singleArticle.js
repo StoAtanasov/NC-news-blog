@@ -52,7 +52,7 @@ class SingleArticle extends Component {
     const {article_id} = this.props;
     api.getArticle(article_id).then(article => {
       this.setState({article, isLoading: false})
-    }).catch((error) => {
+    }).catch(error => {
       this.setState({
         error: { 
           status: error.response.status, 

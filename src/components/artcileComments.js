@@ -3,16 +3,19 @@ import * as api from "./api";
 import CreateComment from "./createComment";
 import RemoveComment from "./removeComment";
 import VoteUpdater from "./votesUpdater";
+import ErrorHandler from "./errorHandler";
 
 class ArticleComments extends Component {
   state = {
     comments: [],
-    isLoading: true
+    isLoading: true,
+    error: null
   };
   render() {
-    const { comments, isLoading } = this.state;
+    const { comments, isLoading, error } = this.state;
     const { loggedInUser } = this.props;
 
+    if(error) return <ErrorHandler error={error} />
     if (isLoading) return <p>Loading...</p>;
     return (
       <section>
@@ -51,18 +54,38 @@ class ArticleComments extends Component {
     const { article_id } = this.props;
     api.getArtcilceComments(article_id).then(comments => {
       this.setState({ comments, isLoading: false });
+    })
+    .catch(error => {
+      this.setState({
+        error: {
+          status: error.response.status,
+          msg: error.response.data.msg
+        }, 
+        isLoading:false
+      })
     });
   };
 
   postComment = (body, username) => {
     const { article_id } = this.props;
-    api.postArticleComment(article_id, { body, username }).then(comment => {
-      this.setState(({ comments }) => {
-        return {
-          comments: [...comments, comment]
-        };
+    api
+      .postArticleComment(article_id, { body, username })
+      .then(comment => {
+        this.setState(({ comments }) => {
+          return {
+            comments: [...comments, comment]
+          };
+        });
+      })
+      .catch(error => {
+        this.setState({
+          error: {
+            status: error.response.status,
+            msg: error.response.data.msg
+          },
+          isLoading: false
+        });
       });
-    });
   };
 
   removeCommentById = comment_id => {
