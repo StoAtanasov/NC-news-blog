@@ -15,7 +15,7 @@ class ArticleComments extends Component {
     const { comments, isLoading, error } = this.state;
     const { loggedInUser } = this.props;
 
-    if(error) return <ErrorHandler error={error} />
+    if (error) return <ErrorHandler error={error} />;
     if (isLoading) return <p>Loading...</p>;
     return (
       <section>
@@ -25,11 +25,13 @@ class ArticleComments extends Component {
               <li>Author: {comment.author}</li>
               <li>{comment.body}</li>
               <li>Date: {new Date(comment.created_at).toLocaleString()}</li>
-              <VoteUpdater data={comment}/>            
-              { loggedInUser === comment.author ? <RemoveComment
-                comment_id={comment.comment_id}
-                removeCommentById={this.removeCommentById}
-              /> : null}
+              <VoteUpdater data={comment} />
+              {loggedInUser === comment.author ? (
+                <RemoveComment
+                  comment_id={comment.comment_id}
+                  removeCommentById={this.removeCommentById}
+                />
+              ) : null}
             </ul>
           );
         })}
@@ -52,18 +54,20 @@ class ArticleComments extends Component {
 
   fetchComments = () => {
     const { article_id } = this.props;
-    api.getArtcilceComments(article_id).then(comments => {
-      this.setState({ comments, isLoading: false });
-    })
-    .catch(error => {
-      this.setState({
-        error: {
-          status: error.response.status,
-          msg: error.response.data.msg
-        }, 
-        isLoading:false
+    api
+      .getArtcilceComments(article_id)
+      .then(comments => {
+        this.setState({ comments, isLoading: false });
       })
-    });
+      .catch(error => {
+        this.setState({
+          error: {
+            status: error.response.status,
+            msg: error.response.data.msg
+          },
+          isLoading: false
+        });
+      });
   };
 
   postComment = (body, username) => {

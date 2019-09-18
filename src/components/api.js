@@ -36,7 +36,7 @@ export const getArtcilceComments = article_id => {
 
 export const postArticleComment = (article_id, newComment) => {
   return request
-    .post(`/articls/${article_id}/comments`, newComment)
+    .post(`/articles/${article_id}/comments`, newComment)
     .then(({ data }) => {
       return data.comment;
     });

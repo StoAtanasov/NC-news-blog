@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Button, Form} from "react-bootstrap";
 class CreateComment extends Component {
   state = {
-    body: ""
+    body: "",
+    error: null
   };
   render() {
     const { body } = this.state;
