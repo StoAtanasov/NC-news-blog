@@ -1,16 +1,42 @@
 import React from "react";
 import { Link } from "@reach/router";
+import {Form, Navbar, Nav,} from "react-bootstrap";
 
 const NavBar = props => {
   const { loggedInUser } = props;
   return (
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/articles"> All articles</Link>
-      <Link to="/topics/coding"> Coding</Link>
-      <Link to="/topics/football"> Football</Link>
-      <Link to="/topics/cooking"> Cooking</Link>
-      <p>Logged in as: {loggedInUser}</p>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand className={"logo"}>
+          <img
+            className={"logoimg"}
+            src={`/images/logo.jpg`}
+            alt="Link to all coding articles"
+          />{" "}
+        </Navbar.Brand>
+        <Nav className="mr-auto">
+          <Link className="navbar" to="/">
+            Home
+          </Link>
+          <Link className="navbar" to="/articles">
+            {" "}
+            Articles
+          </Link>
+          <Link className="navbar" to="/topics/coding">
+            {" "}
+            Coding
+          </Link>
+          <Link className="navbar" to="/topics/football">
+            {" "}
+            Football
+          </Link>
+          <Link className="navbar" to="/topics/cooking">
+            {" "}
+            Cooking
+          </Link>
+        </Nav>
+        <Form inline>Logged in as: {loggedInUser}</Form>
+      </Navbar>
     </nav>
   );
 };

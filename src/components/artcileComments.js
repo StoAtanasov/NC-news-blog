@@ -18,7 +18,7 @@ class ArticleComments extends Component {
     if (error) return <ErrorHandler error={error} />;
     if (isLoading) return <p>Loading...</p>;
     return (
-      <section>
+      <divgit addfef>
         {comments.map(comment => {
           return (
             <ul key={comment.comment_id}>
@@ -39,7 +39,7 @@ class ArticleComments extends Component {
           postComment={this.postComment}
           loggedInUser={loggedInUser}
         />
-      </section>
+      </divgit addfef>
     );
   }
   componentDidMount() {

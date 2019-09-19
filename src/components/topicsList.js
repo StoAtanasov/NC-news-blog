@@ -14,13 +14,19 @@ class TopicsList extends Component {
 
     if(isLoading) return <p>Loading...</p>
     return (
-      <div>
+      <div className="topic">
         {topics.map(topic => {
           return (
             <ul key={topic.slug}>
               <li>
                 {" "}
-                <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
+                <Link to={`/topics/${topic.slug}`}>
+                  
+                  <img
+                    src={`/images/${topic.slug}.jpg`}
+                    alt="Link to all coding articles"
+                  /><p className="justText" >{topic.slug}</p>
+                </Link>
               </li>
             </ul>
           );

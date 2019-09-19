@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import Header from "./components/header";
 import Home from "./components/home";
 import { Router } from "@reach/router";
 import ArticlesList from "./components/artcilesList";
 import SingleArticle from "./components/singleArticle";
-import "bootstrap/dist/css/bootstrap.min.css";
 import TopicsList from "./components/topicsList";
 import ArticleComments from "./components/artcileComments";
 import CreateComment from "./components/createComment";
@@ -35,7 +35,7 @@ class App extends Component {
           <TopicsList path="/topics" />
           <CreateComment path="/articles/:article_id/newcomment" />
           <RemoveComment path="/articles/:article_id/:comment_id" />
-        </Router>
+        </Router>        
         <section>
           <div className="wave wave1"></div>
           <div className="wave wave2"></div>

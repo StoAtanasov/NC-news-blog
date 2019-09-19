@@ -1,34 +1,70 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
+
 /* Mobile Styles */
 @media only screen and (max-width: 400px) {
   body {
-    background-color: #F09A9D; /* Red */
+    background-color: rgb(81, 152, 233); /* Red */
   }
 }
 
 /* Tablet Styles */
 @media only screen and (min-width: 401px) and (max-width: 960px) {
   body {
-    background-color: #F5CF8E; /* Yellow */
+    background-color: rgb(81, 152, 233); /* Yellow */
   }
 }
 
 /* Desktop Styles */
 @media only screen and (min-width: 961px) {
   body {
-    background-color: #B2D6FF; /* Blue */
+    background-color: rgb(21, 113, 218); /* Blue */
   }
 }
 
 .App {
   text-align: center;
 }
-/* section {
-  position: absolute;
+
+/* navbar */
+.navbar{
+  color: white;
+ }
+
+ .logoimg{
+   position:absolute;
+    top:10px; 
+    left:10px;
+    width:30px;
+    height:30px;   
+    overflow:hidden;
+ }
+
+
+
+ /* topic images */
+ .topic img{
+  align-items: center;
+  justify-content: inherit;
+  display: block;
+  width: 30%;
+  margin: 20px auto;
+  height: auto;
+  flex-wrap: wrap;
+  border: 2px solid white;
+border-radius: 40px 5px 40px 5px;
+ }
+
+
+
+
+
+
+ /* Animation */
+ section {
+  position: sticky;
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -61,7 +97,7 @@ section, .wave.wave1 {
   }
 }
 
-section .wave.wave2{
+ .wave2{
   animation: animate2 15s linear infinite;
   z-index: 999;
   opacity: 0,5;
@@ -77,7 +113,7 @@ section .wave.wave2{
   }
 }
 
-section, .wave ,.wave3{
+ .wave3{
   animation: animate 30s linear infinite;
   z-index: 998;
   opacity: 0.2;
@@ -85,7 +121,7 @@ section, .wave ,.wave3{
   bottom: 15px;
 }
 
-section, .wave ,.wave4{
+ .wave4{
   animation: animate3 5s linear infinite;
   z-index: 999;
   opacity: 0.7;
@@ -98,4 +134,4 @@ section, .wave ,.wave4{
   100% {
     background-position-x: -1000px;
   }
-} */
+} 

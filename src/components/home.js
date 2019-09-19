@@ -1,16 +1,14 @@
 import React from 'react';
 import TopicsList from './topicsList';
 
-
 const Home = () => {
-  return ( 
+  return (
     <>
-    <TopicsList /> 
-
-    
+      <TopicsList />
+     
     </>
-  
   );
+  
 }
  
 export default Home;
