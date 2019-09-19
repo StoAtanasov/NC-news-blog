@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TopicsList from './topicsList';
 
-class Home extends Component {
-  sate = {
 
-  }
-  render() { 
-    return ( 
-      <TopicsList />
-     );
-  }
+const Home = () => {
+  return ( 
+    <>
+    <TopicsList /> 
+
+    
+    </>
+  
+  );
 }
  
 export default Home;

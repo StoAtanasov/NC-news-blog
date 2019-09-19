@@ -10,6 +10,9 @@ class TopicsList extends Component {
   };
   render() {
     const { topics, isLoading, error } = this.state;
+    if(error) return 
+
+    if(isLoading) return <p>Loading...</p>
     return (
       <div>
         {topics.map(topic => {
