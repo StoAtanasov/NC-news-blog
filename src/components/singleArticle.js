@@ -3,6 +3,7 @@ import * as api from './api';
 import ArticleComments from "./artcileComments";
 import VoteUpdater from "./votesUpdater";
 import ErrorHandler from "./errorHandler";
+import { Button} from "react-bootstrap";
 
 class SingleArticle extends Component {
   state = {
@@ -17,16 +18,20 @@ class SingleArticle extends Component {
     if(error) return <ErrorHandler error={error}/>
     if(isLoading) return <p>Loading...</p>
     return (
-      <main>
-        <ul>
-          <li>Author: {article.author}</li>
-          <li>Title: {article.title}</li>
-          <li>{article.body}</li>
-          <li>Date: {new Date(article.created_at).toLocaleString()}</li>
-          <VoteUpdater data={article}/>
-          <li>Comments: {article.comment_count}</li>
+      <main className="articleContainer">
+        <ul className="article">
+          <li className="articleList">Author: {article.author}</li>
+          <li className="articleList articleTitle">Title: {article.title}</li>
+          <li className="articleList articleText">{article.body}</li>
+          <li className="articleList">
+            Date: {new Date(article.created_at).toLocaleString()}
+          </li>
+          <VoteUpdater className="articleList" data={article} />
+          <li className="articleList">Comments: {article.comment_count}</li>
         </ul>
-        <button onClick={this.fetchAllComments}>Show comments</button>
+        <Button variant="primary" type="submit" onClick={this.fetchAllComments}>
+          Show comments
+        </Button>
         {showComments && (
           <ArticleComments
             loggedInUser={loggedInUser}

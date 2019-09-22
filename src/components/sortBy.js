@@ -1,27 +1,48 @@
-import React from "react";
-import { Dropdown, Button, ButtonGroup } from "react-bootstrap";
+import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 
-const SortBy = props => {
-  return (
-    <Dropdown
-      as={ButtonGroup}
-      onClick={event => {
-        const sort_by = event.target.name;
-        if (sort_by) {
-          props.fetchArticles(sort_by);
-        }
-      }}
-    >
-      <Button variant="warning">Sort by</Button>
-      <Dropdown.Toggle split variant="warning" id="dropdown-split-basic" />
 
-      <Dropdown.Menu>
-        <Dropdown.Item name="created_at">Date</Dropdown.Item>
-        <Dropdown.Item name="comment_count"> Comments</Dropdown.Item>
-        <Dropdown.Item name="votes">Votes</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  );
-};
+class SortBy extends Component {
+  state = {
+    sort_by: "created_at",
+    order: "desc"
+  };
+  render() {
+    console.log(this.state);
+    return (
+      <div>
+        <form className="sortingForm" onSubmit={this.HandleSubmit}>
+          <label className="sortingBy">Sort by:</label>
+          <select className="selectSortOrder" name="sort_by" onChange={this.handleChange}>
+            <option value="created_at">Date</option>
+            <option value="comment_count">Comments</option>
+            <option value="votes">Votes</option>
+          </select>
+          <label className="orderBy"> Order: </label>
+          <select className="selectSortOrder" name="order" onChange={this.handleChange}>
+            <option value="desc">Descending</option>
+            <option value="asc">Ascending</option>
+          </select>
+        </form>
+        <Button variant="primary" type="submit" onClick={this.handleSubmit}>
+          Submit
+        </Button>
+      </div>
+    );
+  }
 
+  handleChange = e => {
+    const { name, value } = e.target;
+    console.log(">>>>>", name, value);
+    this.setState({ [name]: value });
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    const { fetchArticles } = this.props;
+    const { sort_by, order } = this.state;
+
+    fetchArticles(sort_by, order);
+  };
+}
+ 
 export default SortBy;

@@ -1,43 +1,48 @@
 import React from "react";
 import { Link } from "@reach/router";
-import {Form, Navbar, Nav,} from "react-bootstrap";
-
+import { Nav } from "react-bootstrap";
+import "@fortawesome/fontawesome-free/css/all.css";
 const NavBar = props => {
   const { loggedInUser } = props;
   return (
-    <nav>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand className={"logo"}>
-          <img
-            className={"logoimg"}
-            src={`/images/logo.jpg`}
-            alt="Link to all coding articles"
-          />{" "}
-        </Navbar.Brand>
-        <Nav className="mr-auto">
-          <Link className="navbar" to="/">
-            Home
+    <>
+      <Nav className="navbar" variant="dark">
+        <Nav.Item>
+          <Link className="text" to="/">
+            <i className="fas fa-home"></i>
           </Link>
-          <Link className="navbar" to="/articles">
-            {" "}
-            Articles
+        </Nav.Item>
+        <Nav.Item>
+          <Link className="text" to="/articles">
+            <i className="far fa-newspaper"></i> Articles
           </Link>
-          <Link className="navbar" to="/topics/coding">
+        </Nav.Item>
+        <Nav.Item>
+          <Link className="text" to="/topics/coding">
             {" "}
             Coding
-          </Link>
-          <Link className="navbar" to="/topics/football">
+          </Link>{" "}
+        </Nav.Item>
+        <Nav.Item>
+          <Link className="text" to="/topics/football">
             {" "}
             Football
-          </Link>
-          <Link className="navbar" to="/topics/cooking">
+          </Link>{" "}
+        </Nav.Item>
+        <Nav.Item>
+          <Link className="text" to="/topics/cooking">
             {" "}
             Cooking
-          </Link>
-        </Nav>
-        <Form inline>Logged in as: {loggedInUser}</Form>
-      </Navbar>
-    </nav>
+          </Link>{" "}
+        </Nav.Item>
+        <Nav.Item>
+          <p className="text">
+            {" "}
+            <i className="far fa-user"></i> {loggedInUser}
+          </p>
+        </Nav.Item>
+      </Nav>
+    </>
   );
 };
 

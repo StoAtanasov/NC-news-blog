@@ -2,11 +2,17 @@ import React from 'react';
 
 const RemoveComment = (props) => {
   const { removeCommentById, comment_id } = props;
-  return ( 
-    <button onClick={() =>{
-      removeCommentById(comment_id);
-    }}>Delete</button>
-   );
+  return (
+    <button
+      className="delete"
+      onClick={() => {
+        removeCommentById(comment_id);
+      }}
+    >
+      {" "}
+      <img src="/images/delete.png" alt="delete comment" />
+    </button>
+  );
 }
  
 export default RemoveComment;

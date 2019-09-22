@@ -19,6 +19,8 @@ class App extends Component {
     const { loggedInUser } = this.state;
     return (
       <div className="App">
+
+
         <Header loggedInUser={loggedInUser} />
         <Router>
           <Home path="/" />
@@ -35,8 +37,14 @@ class App extends Component {
           <TopicsList path="/topics" />
           <CreateComment path="/articles/:article_id/newcomment" />
           <RemoveComment path="/articles/:article_id/:comment_id" />
-        </Router>        
-        <section>
+        </Router>
+        
+        <div className="sunContainer">
+         <span className="sun sunshine"></span>
+          <span className="sun"></span>
+        </div>
+
+        <section className="waves">
           <div className="wave wave1"></div>
           <div className="wave wave2"></div>
           <div className="wave wave3"></div>

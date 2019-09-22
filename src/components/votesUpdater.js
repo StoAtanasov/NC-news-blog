@@ -12,16 +12,19 @@ class VoteUpdater extends Component {
       <>
         <p>Votes: {votes + votesChange}</p>
         <button
+          className="like"
           onClick={() => this.updateVotes(1, article_id, comment_id)}
           disabled={votesChange === 1}
         >
-          Like
+          <img src="/images/like_PNG35.png" alt="like button" />
         </button>
         <button
+          className="dislike"
           onClick={() => this.updateVotes(-1, article_id, comment_id)}
           disabled={votesChange === -1}
         >
-          Dislike
+          {" "}
+          <img src="/images/dislike_PNG69.png" alt="dislike button" />
         </button>
       </>
     );

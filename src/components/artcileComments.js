@@ -18,14 +18,20 @@ class ArticleComments extends Component {
     if (error) return <ErrorHandler error={error} />;
     if (isLoading) return <p>Loading...</p>;
     return (
-      <divgit addfef>
+      <div className="commentsContainer">
+        <CreateComment
+          postComment={this.postComment}
+          loggedInUser={loggedInUser}
+        />
         {comments.map(comment => {
           return (
-            <ul key={comment.comment_id}>
-              <li>Author: {comment.author}</li>
-              <li>{comment.body}</li>
-              <li>Date: {new Date(comment.created_at).toLocaleString()}</li>
-              <VoteUpdater data={comment} />
+            <ul className="comments" key={comment.comment_id}>
+              <li className="commentsList">Author: {comment.author}</li>
+              <li className="commentsList commentText">{comment.body}</li>
+              <li className="commentsList">
+                Date: {new Date(comment.created_at).toLocaleString()}
+              </li>
+              <VoteUpdater className="commentsList" data={comment} />
               {loggedInUser === comment.author ? (
                 <RemoveComment
                   comment_id={comment.comment_id}
@@ -35,11 +41,8 @@ class ArticleComments extends Component {
             </ul>
           );
         })}
-        <CreateComment
-          postComment={this.postComment}
-          loggedInUser={loggedInUser}
-        />
-      </divgit addfef>
+        
+      </div>
     );
   }
   componentDidMount() {

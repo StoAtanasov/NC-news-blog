@@ -10,13 +10,14 @@ class CreateComment extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Comment</Form.Label>
+          <Form.Label></Form.Label>
           <Form.Control
             name="body"
             value={body}
             onChange={this.handleChange}
             as="textarea"
             rows="5"
+            colunm="10"
             placeholder="Enter your comment here"
           />
         </Form.Group>
