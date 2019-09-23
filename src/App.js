@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
+import "./style/App.css";
 import Header from "./components/header";
 import Home from "./components/home";
 import { Router } from "@reach/router";
@@ -10,6 +10,7 @@ import TopicsList from "./components/topicsList";
 import ArticleComments from "./components/artcileComments";
 import CreateComment from "./components/createComment";
 import RemoveComment from "./components/removeComment";
+import ErrorHandler from "./components/errorHandler";
 
 class App extends Component {
   state = {
@@ -19,8 +20,6 @@ class App extends Component {
     const { loggedInUser } = this.state;
     return (
       <div className="App">
-
-
         <Header loggedInUser={loggedInUser} />
         <Router>
           <Home path="/" />
@@ -37,10 +36,13 @@ class App extends Component {
           <TopicsList path="/topics" />
           <CreateComment path="/articles/:article_id/newcomment" />
           <RemoveComment path="/articles/:article_id/:comment_id" />
+          <ErrorHandler
+            error={{ status: 404, msg: "Page not found" }}        default
+          />
         </Router>
-        
+
         <div className="sunContainer">
-         <span className="sun sunshine"></span>
+          <span className="sun sunshine"></span>
           <span className="sun"></span>
         </div>
 

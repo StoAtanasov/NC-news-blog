@@ -351,7 +351,7 @@ section,
 .sun {
   width: 180px;
   height: 180px;
-  background: #fcbb04;
+  background: #fcbb10;
   background: linear-gradient(to #fcbb04, #fffc00);
   border-radius: 100px;
   display: inline;
@@ -363,7 +363,7 @@ section,
 }
 
 .sunshine {
-  animation: sunshine 3s infinite;
+  animation: sunshine 2.5s infinite;
 }
 
 @keyframes sunshine {

@@ -63,7 +63,6 @@ class ArticlesList extends Component {
 
   fetchArticles = (sort_by, order) => {
     const { topic } = this.props;
-    console.log(sort_by, order);
     api
       .getArticlesByParams(topic, sort_by, order)
       .then(articles => {

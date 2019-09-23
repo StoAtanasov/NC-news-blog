@@ -6,9 +6,7 @@ const Header = props => {
   return (
     <>
       <NavBar loggedInUser={loggedInUser} />
-
-      <h1 className="headerText">NC news blog</h1>
-      
+      <h1 className="headerText">NC news blog</h1>      
     </>
   );
 };

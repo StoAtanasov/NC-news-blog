@@ -4,8 +4,7 @@ import TopicsList from './topicsList';
 const Home = () => {
   return (
     <>
-      <TopicsList />
-     
+      <TopicsList />     
     </>
   );
   

@@ -8,7 +8,6 @@ class SortBy extends Component {
     order: "desc"
   };
   render() {
-    console.log(this.state);
     return (
       <div>
         <form className="sortingForm" onSubmit={this.HandleSubmit}>
@@ -33,14 +32,12 @@ class SortBy extends Component {
 
   handleChange = e => {
     const { name, value } = e.target;
-    console.log(">>>>>", name, value);
     this.setState({ [name]: value });
   };
   handleSubmit = e => {
     e.preventDefault();
     const { fetchArticles } = this.props;
     const { sort_by, order } = this.state;
-
     fetchArticles(sort_by, order);
   };
 }

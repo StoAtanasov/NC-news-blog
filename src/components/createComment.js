@@ -21,25 +21,25 @@ class CreateComment extends Component {
             placeholder="Enter your comment here"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={body.length === 0}>
           Submit
         </Button>
       </Form>
     );
   }
-  
+
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (event) => {
-    const {body} = this.state;
+  handleSubmit = event => {
+    const { body } = this.state;
     const { loggedInUser, postComment } = this.props;
-    event.preventDefault()
+    event.preventDefault();
     postComment(body, loggedInUser);
-    this.setState({body: ""})
-  }
+    this.setState({ body: "" });
+  };
 }
 
 export default CreateComment;
