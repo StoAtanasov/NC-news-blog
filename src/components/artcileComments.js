@@ -40,8 +40,7 @@ class ArticleComments extends Component {
               ) : null}
             </ul>
           );
-        })}
-        
+        })}        
       </div>
     );
   }
