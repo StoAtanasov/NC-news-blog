@@ -24,7 +24,8 @@ react-scripts": ^3.1.1
 Getting started
 The information below will allow you to get this application up and running on your local machine.
 
-Installation
+Installation:
+
 Clone this repository on to your local machine
 git clone https://github.com/Pandius/Front-end-News.git
 Navigate into the repository
@@ -36,8 +37,5 @@ npm install
 Start the application to run on your default browser
 npm start
 
-Author
-
-
-Acknowledgements
-Northcoders
+Author:
+Stoyan Atanasov

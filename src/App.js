@@ -37,7 +37,7 @@ class App extends Component {
           <CreateComment path="/articles/:article_id/newcomment" />
           <RemoveComment path="/articles/:article_id/:comment_id" />
           <ErrorHandler
-            error={{ status: 404, msg: "Page not found" }}        default
+            error={{ status: 404, msg: "Page not found" }}  default
           />
         </Router>
 
