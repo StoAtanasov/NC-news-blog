@@ -28,6 +28,7 @@ class TopicsList extends Component {
                     alt="Link to all coding articles"
                   />
                 </Link>
+                  
               </li>
             </ul>
           );

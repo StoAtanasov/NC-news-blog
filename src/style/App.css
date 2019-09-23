@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 /*Mobile Styles */
@@ -33,7 +32,10 @@
 ul {
   list-style: none;
 }
+
+
 /* navbar */
+
 .navbar {
   display: flex;
   flex-wrap: wrap;
@@ -88,13 +90,15 @@ h3 {
 .topicText {
   font-family: Georgia;
   font-weight: 800;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);  
   line-height: 24px;
   padding-bottom: 10px;
   text-align: center;
+  
 }
 
 /* Articles */
+
 .articlesContainer {
   font-family: Helvetica;
   font-weight: 500;
@@ -123,6 +127,7 @@ h3 {
 }
 
 /* Single Article */
+
 .articleContainer {
   display: flex;
   flex-direction: column;
@@ -154,6 +159,7 @@ font-weight: 500;
 }
 
 /* Comments */
+
 .commentsContainer {
   display: flex;
   flex-direction: column;
@@ -238,7 +244,7 @@ font-weight: 500;
   background-color: #fbeec1;
 }
 
-/* Text */
+/* Header */
 
 .headerText {
   font-family: "Halant";

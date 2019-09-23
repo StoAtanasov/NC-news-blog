@@ -14,7 +14,7 @@ const NavBar = props => {
         </Nav.Item>
         <Nav.Item>
           <Link className="text" to="/articles">
-            <i className="far fa-newspaper"></i> Articles
+            <i className="far float-left fa-newspaper"></i> Articles
           </Link>
         </Nav.Item>
         <Nav.Item>
