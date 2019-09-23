@@ -34,4 +34,4 @@ Installation:
 - Start the application to run on your default browser (npm start);
 
 Author:
-Stoyan Atanasov
+ Stoyan Atanasov
